@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/GalleryListFragment">
+
+    <fragment
+        android:id="@+id/GalleryListFragment"
+        android:name="com.example.nasagalleryapp.GalleryListFragment"
+        android:label="@string/gallery_list_fragment_label"
+        tools:layout="@layout/fragment_gallery_list">
+
+        <action
+            android:id="@+id/action_GalleryListFragment_to_GalleryDetailsFragment"
+            app:destination="@id/GalleryDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/GalleryDetailsFragment"
+        android:name="com.example.nasagalleryapp.GalleryDetailsFragment"
+        android:label="@string/gallery_details_fragment_label"
+        tools:layout="@layout/fragment_gallery_details">
+
+        <action
+            android:id="@+id/action_GalleryDetailsFragment_to_GalleryListFragment"
+            app:destination="@id/GalleryListFragment" />
+    </fragment>
+</navigation>
