@@ -1,6 +1,7 @@
 package com.example.nasagalleryapp.data.remote
 
 import android.os.Parcelable
+import com.example.nasagalleryapp.domain.data.NasaGalleryDataItem
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
@@ -32,3 +33,14 @@ data class NasaGalleryItemDto(
     @Expose
     val url: String = ""
 ) : Parcelable
+
+fun NasaGalleryItemDto.toNasaGallery() = NasaGalleryDataItem(
+    copyright = copyright,
+    date = date,
+    explanation = explanation,
+    hdUrl = hdUrl,
+    mediaType = mediaType,
+    serviceVersion = serviceVersion,
+    title = title,
+    url = url
+)
