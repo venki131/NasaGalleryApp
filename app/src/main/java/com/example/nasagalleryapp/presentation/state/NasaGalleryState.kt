@@ -1,4 +1,4 @@
-package com.example.githubtrendingrepositories.presentation.state
+package com.example.nasagalleryapp.presentation.state
 
 import com.example.nasagalleryapp.domain.data.NasaGalleryDataItem
 

@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.githubtrendingrepositories.presentation.state.NasaGalleryState
+import com.example.nasagalleryapp.presentation.state.NasaGalleryState
 import com.example.nasagalleryapp.domain.repository.GalleryRepository
 import com.example.nasagalleryapp.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
