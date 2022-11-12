@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="description" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="fontFamily">@font/droid_sans</item>
+    </style>
+
+    <style name="title" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="fontFamily">@font/droid_sans_bold</item>
+    </style>
+</resources>

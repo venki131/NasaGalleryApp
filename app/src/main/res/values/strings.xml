@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">NASA Gallery App</string>
     <string name="action_settings">Settings</string>
+    <string name="action_select_theme">Theme</string>
     <!-- Strings used for fragments for navigation -->
     <string name="gallery_list_fragment_label">Gallery List Fragment</string>
     <string name="gallery_details_fragment_label">Gallery Details Fragment</string>
@@ -43,4 +44,5 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="album_image">album image</string>
 </resources>

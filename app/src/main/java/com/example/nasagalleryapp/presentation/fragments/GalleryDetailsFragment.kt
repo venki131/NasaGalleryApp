@@ -1,24 +1,31 @@
 package com.example.nasagalleryapp.presentation.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.example.nasagalleryapp.R
+import androidx.fragment.app.Fragment
 import com.example.nasagalleryapp.databinding.FragmentGalleryDetailsBinding
+import com.example.nasagalleryapp.domain.data.NasaGalleryDataItem
+import com.example.nasagalleryapp.presentation.adapters.ViewPagerAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
+@AndroidEntryPoint
 class GalleryDetailsFragment : Fragment() {
 
     private var _binding: FragmentGalleryDetailsBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private var galleryList: MutableList<NasaGalleryDataItem> = arrayListOf()
+    private var pos: Int = 0
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            galleryList = it.getParcelableArrayList("GalleryItem")!!
+            pos = it.getInt("position")
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,10 +39,10 @@ class GalleryDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_GalleryDetailsFragment_to_GalleryListFragment)
-        }
+        val viewpager = binding.viewPager
+        val viewPagerAdapter = ViewPagerAdapter(requireContext(), galleryList)
+        viewpager.adapter = viewPagerAdapter
+        viewpager.currentItem = pos
     }
 
     override fun onDestroyView() {
