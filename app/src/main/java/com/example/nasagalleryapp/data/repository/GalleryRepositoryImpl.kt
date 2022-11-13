@@ -28,7 +28,7 @@ class GalleryRepositoryImpl @Inject constructor(
                             it.toNasaGallery()
                         } as ArrayList<NasaGalleryDataItem>
                 )
-           }
+            }
         } catch (e: Exception) {
             e.printStackTrace()
             withContext(dispatcher) {
