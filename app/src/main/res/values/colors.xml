@@ -5,6 +5,7 @@
     <color name="my_light_primary">#FFf7f4ff</color>
     <color name="my_dark_primary">#FFf7f4ff</color>
     <color name="primary">#fff5f5f5</color>
+    <color name="grey">#bbbcb6</color>
     <color name="primary_dark">#ff757575</color>
     <color name="accent">#ff009688</color>
 </resources>

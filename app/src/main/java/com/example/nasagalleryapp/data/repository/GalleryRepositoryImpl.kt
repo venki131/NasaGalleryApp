@@ -33,7 +33,7 @@ class GalleryRepositoryImpl @Inject constructor(
             e.printStackTrace()
             withContext(dispatcher) {
                 Resource.Failure(
-                    e.message ?: "An unknown error occurred"
+                    e.localizedMessage ?: "An unknown error occurred"
                 )
             }
         }
