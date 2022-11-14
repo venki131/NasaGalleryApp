@@ -1,7 +1,6 @@
 package com.example.nasagalleryapp.presentation.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,9 @@ import com.example.nasagalleryapp.R
 import com.example.nasagalleryapp.databinding.FragmentGalleryListBinding
 import com.example.nasagalleryapp.domain.data.NasaGalleryDataItem
 import com.example.nasagalleryapp.presentation.adapters.GalleryListAdapter
+import com.example.nasagalleryapp.presentation.util.ConnectionLiveData
 import com.example.nasagalleryapp.presentation.view_model.NasaGalleryViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,11 +30,13 @@ class GalleryListFragment : Fragment(), (Int) -> Unit {
     private lateinit var adapter: GalleryListAdapter
     private val galleryDataItemList: MutableList<NasaGalleryDataItem> = arrayListOf()
     private val viewModel: NasaGalleryViewModel by viewModels()
-
+    private lateinit var connectionLiveData: ConnectionLiveData
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        connectionLiveData = ConnectionLiveData(requireContext())
         viewModel.getGalleryList()
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,8 +50,14 @@ class GalleryListFragment : Fragment(), (Int) -> Unit {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        connectionLiveData.observe(viewLifecycleOwner) { isNetworkAvailable ->
+            isNetworkAvailable?.let {
+                updateUI(it)
+            }
+        }
         initObserver()
         initRecyclerView()
+
     }
 
     private fun initObserver() {
@@ -86,7 +95,7 @@ class GalleryListFragment : Fragment(), (Int) -> Unit {
 
     private fun handleError(message: String?) {
         message?.let {
-            Log.e("Error", it)
+            Snackbar.make(requireView(), message, Snackbar.LENGTH_LONG).show()
         }
     }
 
@@ -103,5 +112,16 @@ class GalleryListFragment : Fragment(), (Int) -> Unit {
                 "position" to pos
             )
         )
+    }
+
+    private fun updateUI(isOnline: Boolean) {
+        if (isOnline) {
+            binding.recyclerview.visibility = View.VISIBLE
+            binding.supportLayout.visibility = View.GONE
+        } else {
+            binding.recyclerview.visibility = View.GONE
+            binding.supportLayout.visibility = View.VISIBLE
+            progressVisibility(false)
+        }
     }
 }
