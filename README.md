@@ -4,6 +4,7 @@ Sample application to demonstrate the list of images obtained from the server an
 app consists of 2 screens
 1. List Screen - Landing screen consists of list of images obtained from the Api.
 2. Details Screen - Detailed information (HD_image, Title, Description) of the image
+![package_structure](https://user-images.githubusercontent.com/25293187/201612843-1b94711e-ecc0-4573-bb58-d7b8e4131b5e.png)
 
 ![gallery_list](https://user-images.githubusercontent.com/25293187/201611947-279f4882-525c-4c5b-a41a-16b98f36c2bf.png)
 ![image_details](https://user-images.githubusercontent.com/25293187/201611984-4306887d-8661-4325-b1fb-c75baac79603.png)
